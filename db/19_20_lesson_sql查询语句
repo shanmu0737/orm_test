@@ -1,0 +1,35 @@
+1. 查询出姓j的 男性员工
+for emp in db.session.query(Employee).filter(Employee.name.startswith('j'),Employee.gender=='male'):
+    print(emp)
+2.查询姓刘的，姓张的
+for emp in db.session.query(Employee).filter(or_(Employee.name.startswith('刘%'),Employee.name.startswith('张'))):
+    print(emp)
+
+3. 查询部门，按id排序
+for emp in Department.query.order_by(Department.id):
+    print(emp)
+
+4.查询部门，按id倒序
+for emp in db.session.query(Department).order_by(desc(Department.id)):
+    print(emp)
+
+5. 查询工资最高的
+2022-02-18 15:57:24,168 INFO sqlalchemy.engine.Engine [generated in 0.00025s] (1, 0)
+
+6. 查询单条信息
+dep = db.session.query(Department).filter(Department.id==2).first()
+#用one 查询不到数据时报错，用one_or_none 查询不到数据不报错
+dep = db.session.query(Department).filter(Department.id==233).one_or_none()
+
+7. 查询一行一列
+d = db.session.query(Department.id).filter(Department.name=='测试部').scalar()
+
+8. 统计部门表数量
+db.session.query(Department).count()
+
+9.统计员工表姓j的有几个
+db.session.query(Employee).filter(Employee.name.startswith('j')).count()
+
+10. 统计员工表男女员工的数量
+from sqlalchemy import func
+db.session.query(func.count(Employee.gender),Employee.gender).group_by(Employee.gender).all()

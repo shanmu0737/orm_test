@@ -1,0 +1,46 @@
+{% extends 'admin/bank_page.html' %}
+
+{% block page_head %}
+
+{% endblock %}
+
+{% block page_content %}
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Data Table</h6>
+        <div class="table-responsive">
+          <table id="dataTableExample" class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>工资</th>
+                <th>地址</th>
+                <th>生日</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for emp in employees.items %}
+                <tr>
+                    <td>{{ emp.id }}</td>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.gender }}</td>
+                    <td>{{ emp.salary }}</td>
+                    <td>{{ emp.address }}</td>
+                    <td>{{ emp.birthdate.strftime('%Y-%m-%d') }}</td>
+                    <td>
+                      <a href="/emp/{{ emp.id }}/" class="btn btn-default" title="查看"><i class="fa fa-search"></i></a>
+                      <a href="{{ url_for('.emp_edit', id=emp.id) }}" class="btn btn-default" title="编辑"><i class="fa fa-pencil"></i></a>
+                      <a href="{{ url_for('.emp_del', id=emp.id ) }}" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'admin/bank_page.html' %}
+
+{% block page_head %}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horzontal" method="post" action="#" role="form">
+                <div class="form-group row">
+                    <h3 class="card-title row">新增员工</h3>
+                    <p class="row">new table</p>
+                    <div class="col-lg-3">
+                        <label for="name" class="col-form-label">姓名</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input class="form-control" maxlength="25" name="name" id="name" type="text" placeholder="Type Something..">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-3">
+                        <label for="department_id" class="col-form-label">部门</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <select class="form-control m-d-3" name="department_id" id="department_id">
+                            {% for depar in depaitments %}
+                            <option value="{{ depar.id }}">{{ depar.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-3">
+                        <label for="gender" class="col-form-label">性别</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <label>
+                            <input type="radio" name="gender" id="male" value="男" checked>
+                            男
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" id="female" value="女" >
+                            女
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-3">
+                        <label for="job" class="col-form-label">工作</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input class="form-control" maxlength="10" name="job" id="job" type="text" placeholder="Type Something..">
+                    </div>
+                </div>
+                <div class="form-group mb-0 row">
+                    <div class="col-lg-3">
+                        <label for="birthdate" class="col-form-label">生日</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input class="form-control" maxlength="10" name="birthdate" id="birthdate" type="text" placeholder="Type Something..">
+                    </div>
+                </div>
+                <div class="form-group mb-0 row">
+                    <div class="col-lg-3">
+                        <label for="idcard" class="col-form-label">IDcard</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input class="form-control" maxlength="10" name="idcard" id="idcard" type="text" placeholder="Type Something..">
+                    </div>
+                </div>
+                <div class="form-group mb-0 row">
+                    <div class="col-lg-3">
+                        <label for="address" class="col-form-label">地址</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input class="form-control" maxlength="10" name="address" id="address" type="text" placeholder="Type Something..">
+                    </div>
+                </div>
+                <div class="form-group mb-0 row">
+                    <div class="col-lg-3">
+                        <label for="salary" class="col-form-label">薪水</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <input class="form-control" maxlength="10" name="salary" id="salary" type="text" placeholder="Type Something..">
+                    </div>
+                </div>
+                <div class="col-md-offset-3 col-lg-10">
+                    <input type="submit" class="btn btn-primary" value="提交">
+                    <input type="reset" class="btn btn-default" value="重置">
+                    <a href="{{ url_for('admin.emp_list') }}" class="btn btn-default">返回列表</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

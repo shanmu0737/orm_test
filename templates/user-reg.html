@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--导入helper宏-->
+{% import 'helper.html' as helper %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+<form action="#" method="post">
+{{ form.csrf_token }}
+  <table border="1">
+    {{ helper.render_field(form.username ) }}
+    {{ helper.render_field(form.email ) }}
+    {{ helper.render_field(form.password ) }}
+    {{ helper.render_field(form.confrim ) }}
+    {{ helper.render_field(form.accept ) }}
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="提交">
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
